@@ -36,6 +36,7 @@ LANGUAGE JAVA NAME 'OCIRESTAPIHelper.signPostRequest (java.lang.String,java.lang
 
 /
 
+-- useful to provide the HTTP header x-content-sha256 for PUT and POST methods
 create or replace FUNCTION calculateSHA256( p_body in varchar2 ) RETURN Varchar2
 AS
 LANGUAGE JAVA NAME 'OCIRESTAPIHelper.calculateSHA256 (java.lang.String) return java.lang.String';

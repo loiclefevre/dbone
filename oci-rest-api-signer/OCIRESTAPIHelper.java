@@ -118,7 +118,7 @@ public final class OCIRESTAPIHelper {
         headers.put("host", hostHeader);
         headers.put("content-type", "application/json");
         headers.put("content-length", Integer.toString(body.length()));
-        headers.put("x-content-sha256", calculateSHA256(body.getBytes(StandardCharsets.UTF_8)));
+        headers.put("x-content-sha256", calculateSHA256(body));
 
         return signer.sign(method, path, headers).toString();
 
@@ -241,6 +241,15 @@ public final class OCIRESTAPIHelper {
                                          String administratorKeyFingerprint,
                                          String privateKeyString) throws IOException {
         return advancedSignRequest("post", POST_SIGNERS, dateHeader, path, hostHeader, body, compartmentOCID, administratorOCID, administratorKeyFingerprint, privateKeyString);
+    }
+
+    /**
+     * Calculate the Base64-encoded string representing the SHA256 of a request body
+     *
+     * @param body The request body to hash
+     */
+    public static String calculateSHA256(final String body) {
+        return calculateSHA256(body.getBytes(StandardCharsets.UTF_8));
     }
 
     /**

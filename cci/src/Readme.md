@@ -16,8 +16,18 @@ You'll also need to install ORDS 18.X as a best practice for managing APEX 18.X 
   - Oracle-base post: https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat
 
 ## Network configuration
+
 ### Oracle Cloud Infrastructure
+You'll need to configure OCI security lists to allow (for the moment) HTTP traffic (soon HTTPS) to the Tomcat port (default: 8080 or 8081 in case you installed Tomcat inside the Db System VM to not conflict with APEX PL/SQL Gateway).
+
 ### Oracle Linux Firewall
+You'll also need to open the ports at the Operating System level with iptables in case of Oracle Linux 6 or Firewalld in case of Oracle Linux 7.
+Example with OL6:
+```Bash
+$ iptables-save > /tmp/iptables.orig  # save the current firewall rules
+$ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT -m comment --comment "Required for APEX"
+$ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8081 -j ACCEPT -m comment --comment "Required for ORDS with Tomcat"
+```
 
 ## Schema creation
 You'll then need to create the schema (and user) CCI and gives the roles.

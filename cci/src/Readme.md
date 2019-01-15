@@ -28,7 +28,7 @@ Example with OL6 as root:
 $ iptables-save > /tmp/iptables.orig  # save the current firewall rules
 $ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT -m comment --comment "Required for APEX"
 $ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8081 -j ACCEPT -m comment --comment "Required for ORDS with Tomcat"
-/sbin/iptables-save > /etc/sysconfig/iptables  # save configuration
+service iptables save  # save configuration
 ```
 
 ## Schema creation

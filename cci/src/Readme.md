@@ -24,6 +24,7 @@ Because of the OTN license agreement requested, you'll need to download it on yo
   Don't forget to source the environment:
 ```Bash
 [oracle @CCI-DB ~] $ . oraenv
+
 ```
 
 ## Virtual Machine to host Oracle Rest Data Services (ORDS)

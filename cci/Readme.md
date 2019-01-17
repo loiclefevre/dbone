@@ -14,8 +14,8 @@ Here is the main repository for the Cloud Center Interface. Its aim is to bring 
   - Reports generation
   
 - Oracle Cloud Infrastructure Resources
-  - Automatic Bare Metal and Virtual Machine Instance shutdown
-    - Exception using predefined Tags
+  - Automatic Bare Metal, Virtual Machine Instance and Db System (with VM shape) shutdown
+    - Exception using predefined Tags, for example: Mandatory_Tags:Schedule=24x7
 
 You'll find the [Installation process here](src/Readme.md)
 

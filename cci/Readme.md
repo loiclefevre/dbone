@@ -17,3 +17,5 @@ Here is the main repository for the Cloud Center Interface. Its aim is to bring 
   - Automatic Bare Metal and Virtual Machine Instance shutdown
     - Exception using predefined Tags
 
+You'll find the [Installation process here](src/Readme.md)
+

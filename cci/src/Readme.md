@@ -29,7 +29,7 @@ Because of the OTN license agreement requested, you'll need to download it on yo
 [oracle @CCI-DB apex] $ sqlplus /nolog
 SQL> conn sys as sysdba
 SQL> ALTER USER ANONYMOUS ACCOUNT UNLOCK;
-SQL> ALTER SESSION SET CONTAINER=XEPDB1;
+SQL> ALTER SESSION SET CONTAINER=CCI;
 SQL> @apexins.sql sysaux sysaux temp /i/
 SQL> @apxchpwd.sql
 SQL> @apex_rest_config.sql

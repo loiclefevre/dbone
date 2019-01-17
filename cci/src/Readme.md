@@ -39,7 +39,7 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 ```
 
 - download ORDS: https://www.oracle.com/technetwork/developer-tools/rest-data-services/downloads/index.html
-  Because of the ODN license agreement requested, you'll need to download it on your local machine and then using sftp tranfer it on the VM.
+  Because of the OTN license agreement requested, you'll need to download it on your local machine and then using sftp tranfer it on the VM.
 ```Bash
 [oracle @CCI-VM ~] $ unzip -d ords ords-18.4.0.354.1002.zip
 ```

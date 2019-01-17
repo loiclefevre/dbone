@@ -24,7 +24,17 @@ Because of the OTN license agreement requested, you'll need to download it on yo
   Don't forget to source the environment:
 ```Bash
 [oracle @CCI-DB ~] $ . oraenv
-
+# ensure you have the right Database setup
+[oracle @CCI-DB ~] $ cd apex
+[oracle @CCI-DB apex] $ sqlplus /nolog
+SQL> conn sys as sysdba
+SQL> ALTER USER ANONYMOUS ACCOUNT UNLOCK;
+SQL> ALTER SESSION SET CONTAINER=XEPDB1;
+SQL> @apexins.sql sysaux sysaux temp /i/
+SQL> @apxchpwd.sql
+SQL> @apex_rest_config.sql
+SQL> @apex_epg_config.sql /root
+SQL> EXEC DBMS_XDB.sethttpport(8080);
 ```
 
 ## Virtual Machine to host Oracle Rest Data Services (ORDS)

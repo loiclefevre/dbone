@@ -98,7 +98,7 @@ Example with OL6 as root on the Db System node(s):
 ```Bash
 $ iptables-save > /tmp/iptables.orig  # save the current firewall rules
 $ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT -m comment --comment "Required for APEX"
-service iptables save  # save configuration
+$ service iptables save  # save configuration
 ```
 
 ## Schema creation

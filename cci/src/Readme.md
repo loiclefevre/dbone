@@ -15,8 +15,10 @@ You'll need to install APEX 18.X hence
 
 ## Virtual Machine to host Oracle Rest Data Services (ORDS)
 You'll then need to create a VM with the following characteristics:
+- Oracle Linux 7.X (7.6 as of now)
 - VM.Standard2.2 shape
-- It must be in the very same VCN as the Db System
+- It must be in the very same VCN as the Db System :)
+- You can leave the other default values
 
 ## Oracle Rest Data Services (ORDS) installation
 You'll also need to install ORDS 18.X as a best practice for managing APEX 18.X Rest Data Services in Apache Tomcat 8.X; either in a dedicated VM or inside the DbSystem VM:

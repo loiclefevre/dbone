@@ -15,6 +15,11 @@ First you'll need to provision a DB System with the following characteristics:
 ## APEX installation
 You'll need to install APEX 18.X on the Db System as oracle user, hence:
 - download it: https://www.oracle.com/technetwork/developer-tools/apex/downloads/index.html
+Because of the OTN license agreement requested, you'll need to download it on your local machine and then using sftp tranfer it on the VM.
+```Bash
+[oracle @CCI-DB ~] $ unzip ords-18.4.0.354.1002.zip
+```
+
 - install it: https://community.oracle.com/message/14983380#14983380
 
 ## Virtual Machine to host Oracle Rest Data Services (ORDS)

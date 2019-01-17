@@ -3,6 +3,8 @@ Quick summary:
 - A Db System will host the main CCI Oracle Database with APEX installed on it.
 - A VM will host Oracle Rest Data Services (ORDS) installed on Tomcat (this requires Open JDK 1.8). ORDS requires to have APEX installed _first_ on the Db System.
 
+![alt text](./Architecture.png "Cloud Center Interface architecture")
+
 ## DB system creation
 First you'll need to provision a DB System with the following characteristics:
 - Extreme Performance

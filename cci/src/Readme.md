@@ -45,6 +45,7 @@ Example with OL7 as root on the VM:
 $ firewall-cmd --permanent --zone=public --add-port=8080/tcp
 $ firewall-cmd --permanent --zone=public --add-port=8081/tcp
 $ firewall-cmd --reload
+$ firewall-cmd --permanent --zone=public --list-ports
 ```
 
 Example with OL6 as root:

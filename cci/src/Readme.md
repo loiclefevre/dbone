@@ -41,7 +41,9 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 
 - install them:
   - Oracle-base post: https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat
-  - Oracle documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224
+  - Oracle Rest Data Services documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224
+  - Apache Tomcat documentation: https://tomcat.apache.org/tomcat-8.5-doc/setup.html
+  
 
 ## Network configuration
 

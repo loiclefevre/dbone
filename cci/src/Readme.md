@@ -33,12 +33,22 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 ## Network configuration
 
 ### Oracle Cloud Infrastructure
-You'll need to configure OCI security lists to allow (for the moment) HTTP traffic (soon HTTPS) to the Tomcat port (default: 8080 or 8081 in case you installed Tomcat inside the Db System VM to not conflict with APEX PL/SQL Gateway).
+You'll need to configure OCI security lists of the VCN to allow (for the moment) HTTP traffic (soon HTTPS) to the ports 8080 and 8081.
+
+*As of now, the Db System provisioning should open the port 1521 to allow SQL Developer connection from your laptop. This requirement will disappear in the future, once the deployment via github / sqlplus is validated!*
 
 ### Oracle Linux Firewall
 You'll also need to open the ports at the Operating System level with iptables in case of Oracle Linux 6 or Firewalld in case of Oracle Linux 7.
 
 Example with OL6 as root:
+```Bash
+$ iptables-save > /tmp/iptables.orig  # save the current firewall rules
+$ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT -m comment --comment "Required for APEX"
+$ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8081 -j ACCEPT -m comment --comment "Required for ORDS with Tomcat"
+service iptables save  # save configuration
+```
+
+Example with OL7 as root:
 ```Bash
 $ iptables-save > /tmp/iptables.orig  # save the current firewall rules
 $ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT -m comment --comment "Required for APEX"
@@ -53,4 +63,7 @@ You'll then need to create the schema (and user) CCI and gives the roles.
 $ sqlplus / as sysdba @sys_setup.sql
 ```
 
-## Manage Certificates
+## Manage Websites Certificates
+To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificates with Oracle database wallets.
+
+Afterwards, you'll need to configure the database ACLs to allow the application to connect to the REST API endpoints 

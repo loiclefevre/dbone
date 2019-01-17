@@ -42,7 +42,8 @@ You'll also need to open the ports at the Operating System level with iptables i
 
 Example with OL7 as root on the VM:
 ```Bash
-$ firewall-cmd --permanent --zone=public --add-port=8080-8081/tcp
+$ firewall-cmd --permanent --zone=public --add-port=8080/tcp
+$ firewall-cmd --permanent --zone=public --add-port=8081/tcp
 $ firewall-cmd --reload
 ```
 

@@ -3,10 +3,9 @@
 First you'll need to provision a DB System with the following characteristics:
 - Extreme Performance 18.X
 - VM.Standard2.2 shape
-- Automatic Backup enabled 
+- Enable Automatic Backup
 - 256GB of storage
-
-Do create also a pluggable database called CCI.
+- Create also a pluggable database (PDB) with name *CCI*.
 
 ## APEX installation
 You'll need to install APEX 18.X hence

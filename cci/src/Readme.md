@@ -1,7 +1,8 @@
 # Setup
 ## DB system creation
 First you'll need to provision a DB System with the following characteristics:
-- Extreme Performance 18.X
+- Extreme Performance
+- Take last version (as of now 18.2.0.0)
 - VM.Standard2.2 shape
 - Enable Automatic Backup
 - 256GB of storage

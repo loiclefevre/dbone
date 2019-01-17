@@ -28,9 +28,8 @@ You'll need to create the user account that will manage Tomcat and ORDS: oracle.
 In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X as a best practice for managing APEX 18.X Rest Data Services.
 - download Tomcat: https://tomcat.apache.org/download-80.cgi
 ```Bash
-[oracle] $ wget http://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.zip
-$ unsip apache-tomcat-8.5.37.zip
-
+[oracle @CCI-VM ~] $ wget http://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.zip
+[oracle @CCI-VM ~] $ unzip apache-tomcat-8.5.37.zip
 ```
 - download ORDS: https://www.oracle.com/technetwork/developer-tools/rest-data-services/downloads/index.html
 - install them:

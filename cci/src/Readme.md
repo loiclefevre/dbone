@@ -25,18 +25,23 @@ Once the VM is created, you can define a reserved IP for the VM.
 You'll need to create the user account that will manage Tomcat and ORDS: oracle.
 
 ## Oracle Rest Data Services (ORDS) installation
-In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X as a best practice for managing APEX 18.X Rest Data Services.
+In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X as a best practice for managing APEX 18.X Rest Data Services. 
+
 - download Tomcat: https://tomcat.apache.org/download-80.cgi
 ```Bash
 [oracle @CCI-VM ~] $ wget http://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.zip
 [oracle @CCI-VM ~] $ unzip apache-tomcat-8.5.37.zip
 ```
+
 - download ORDS: https://www.oracle.com/technetwork/developer-tools/rest-data-services/downloads/index.html
   Because of the ODN license agreement requested, you'll need to download it on your local machine and then using sftp tranfer it on the VM.
+```Bash
+[oracle @CCI-VM ~] $ unzip -d ords ords-18.4.0.354.1002.zip
+```
 
 - install them:
-  - Oracle documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224
   - Oracle-base post: https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat
+  - Oracle documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224
 
 ## Network configuration
 

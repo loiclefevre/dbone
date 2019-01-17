@@ -40,15 +40,13 @@ You'll need to configure OCI security lists of the VCN to allow (for the moment)
 ### Oracle Linux Firewall
 You'll also need to open the ports at the Operating System level with iptables in case of Oracle Linux 6 or Firewalld in case of Oracle Linux 7.
 
-Example with OL6 as root:
+Example with OL7 as root on the VM:
 ```Bash
-$ iptables-save > /tmp/iptables.orig  # save the current firewall rules
-$ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT -m comment --comment "Required for APEX"
-$ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8081 -j ACCEPT -m comment --comment "Required for ORDS with Tomcat"
-service iptables save  # save configuration
+$ firewall-cmd --permanent --zone=public --add-port=8080-8081/tcp
+$ firewall-cmd --reload
 ```
 
-Example with OL7 as root:
+Example with OL6 as root:
 ```Bash
 $ iptables-save > /tmp/iptables.orig  # save the current firewall rules
 $ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT -m comment --comment "Required for APEX"

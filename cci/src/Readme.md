@@ -32,6 +32,8 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 [oracle @CCI-VM ~] $ unzip apache-tomcat-8.5.37.zip
 ```
 - download ORDS: https://www.oracle.com/technetwork/developer-tools/rest-data-services/downloads/index.html
+  Because of the ODN license agreement requested, you'll need to download it on your local machine and then using sftp tranfer it on the VM.
+
 - install them:
   - Oracle documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224
   - Oracle-base post: https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat

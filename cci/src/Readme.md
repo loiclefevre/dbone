@@ -9,7 +9,7 @@ First you'll need to provision a DB System with the following characteristics:
 - Create also a pluggable database (PDB) with name *CCI*.
 
 ## APEX installation
-You'll need to install APEX 18.X hence
+You'll need to install APEX 18.X on the Db System as oracle user, hence:
 - download it: https://www.oracle.com/technetwork/developer-tools/apex/downloads/index.html
 - install it: https://community.oracle.com/message/14983380#14983380
 
@@ -22,9 +22,16 @@ You'll then need to create a VM with the following characteristics:
 
 Once the VM is created, you can define a reserved IP for the VM.
 
+You'll need to create the user account that will manage Tomcat and ORDS: oracle.
+
 ## Oracle Rest Data Services (ORDS) installation
 In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X as a best practice for managing APEX 18.X Rest Data Services.
 - download Tomcat: https://tomcat.apache.org/download-80.cgi
+```Bash
+[oracle] $ wget http://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.zip
+$ unsip apache-tomcat-8.5.37.zip
+
+```
 - download ORDS: https://www.oracle.com/technetwork/developer-tools/rest-data-services/downloads/index.html
 - install them:
   - Oracle documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224

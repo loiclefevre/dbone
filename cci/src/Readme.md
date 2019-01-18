@@ -102,7 +102,7 @@ $ service iptables save  # save configuration
 ```
 
 ## Schema creation
-You'll then need to create the schema (and user) CCI and gives the roles.
+You'll then need to create the schema (and user) CCI and gives the roles. Please retrieve the files from this folder and *don't forget to change the password of user CCI!*
 
 ```Bash
 $ sqlplus / as sysdba @sys_setup.sql
@@ -111,4 +111,9 @@ $ sqlplus / as sysdba @sys_setup.sql
 ## Manage Websites Certificates
 To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificates with Oracle database wallets.
 
+
+
+Reference article: https://oracle-base.com/articles/misc/utl_http-and-ssl
+
 Afterwards, you'll need to configure the database ACLs to allow the application to connect to the REST API endpoints 
+

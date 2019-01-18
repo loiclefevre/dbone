@@ -46,6 +46,25 @@ comment on column identity_domains.default_public_key_pem is 'Default public API
 comment on column identity_domains.oci_idp_ocid is 'OCI Identity Provier OCID (OCID of the IDCS Identity Provider).';
 
 
+-- Log Messages
+-- Used to store log messages for the PL/SQL packages
+create table log_messages (
+  id NUMBER GENERATED ALWAYS AS IDENTITY primary key,
+  identity_domain varchar2(64) not null,
+  message varchar2(4000) not null,
+  log_date timestamp(9) default systimestamp not null
+) 
+ROW STORE COMPRESS ADVANCED;
+
+comment on table log_messages  is 'Contains all the log messages from the Cloud Center Interface code.';
+
+comment on column log_messages.id  is 'Auto generated row ID (primary key).';
+comment on column log_messages.identity_domain  is 'Identity domain the message is referring to.';
+comment on column log_messages.message  is 'The message (maximum 4,000 bytes).';
+comment on column log_messages.log_date  is 'The message timestamp.';
+
+
+
 
 
 

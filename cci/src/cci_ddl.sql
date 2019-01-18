@@ -23,3 +23,13 @@ create table identity_domains (
     default_public_key_pem varchar2(4000),
     oci_idp_ocid varchar2(256)
 );
+
+comment on table identity_domains  is 'Contains all the identity domains managed by the Cloud Center Interface.';
+
+comment on column identity_domains.name is 'Identity domain name.';
+comment on column identity_domains.region is 'Identity domain region (example: us-ashburn-1).';
+comment on column identity_domains.description is 'Identity domain description.';
+comment on column identity_domains.idcs_identifier is 'Identity domain IDCS identifier (example: idcs-xxxxxxxxxxxxxxxxxxxxxxx).';
+comment on column identity_domains.cloud_account is 'Identity domain Cloud Account (example: cacct-yyyyyyyyyyyyyyyyyyyyyyyyyy).';
+
+

@@ -101,15 +101,8 @@ $ iptables -I INPUT 8 -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT 
 $ service iptables save  # save configuration
 ```
 
-## Schema creation
-You'll then need to create the schema (and user) CCI and gives the roles. Please retrieve the files from this folder and *don't forget to change the password of user CCI!*
-
-```Bash
-$ sqlplus / as sysdba @sys_setup.sql
-```
-
-## Manage Websites Certificates
-To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificates with Oracle database wallets.
+## Manage Oracle Cloud Certificate
+To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificate with Oracle database wallets.
 
 Connected on the Db system as oracle:
 - download ![Oracle Cloud Certificate](./oracclecloud.com.cer "Oracle Cloud Certificate")
@@ -123,5 +116,16 @@ Don't forget to source the environment:
 [oracle @CCI-DB ~] $ orapki wallet add -wallet ~/wallet -trusted_cert -cert "/host/oracle/oracclecloud.com.cer" -pwd <YOUR PASSWORD>
 ```
 
-Afterwards, you'll need to configure the database ACLs to allow the application to connect to the REST API endpoints 
+The configuration of database ACLs to allow the application to connect to the REST API endpoints is managed in the script ![sys_setup.sql](./sys_setup.sql "sys_setup.sql"): 
+```SQL
+exec dbms_network_acl_admin.create_acl(acl => 'idcs_apex_acl.xml',description => 'IDCS HTTP ACL', principal => 'APEX_180200', is_grant => TRUE,privilege => 'connect',start_date => null,end_date => null);
+exec DBMS_NETWORK_ACL_ADMIN.ADD_PRIVILEGE(acl => 'idcs_apex_acl.xml',principal => 'APEX_180200',is_grant => true,privilege => 'resolve');
+exec dbms_network_acl_admin.assign_acl(acl => 'idcs_apex_acl.xml', host => '*.oraclecloud.com', lower_port => 443, upper_port => 443);
+```
 
+## Schema creation
+You'll then need to create the schema (and user) CCI and gives the roles. Please retrieve the files from this folder and *don't forget to change the password of user CCI!*
+
+```Bash
+$ sqlplus / as sysdba @sys_setup.sql
+```

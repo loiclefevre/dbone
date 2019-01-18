@@ -83,7 +83,9 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 [oracle @CCI-VM ~] $ unzip apache-tomcat-8.5.37.zip
 [oracle @CCI-VM ~] $ cd apache-tomcat-8.5.37/conf
 ```
-    Change HTTP port to 8081 in the server.xml file:
+
+Change HTTP port to 8081 in the server.xml file:
+    
 ```XML
     <Connector port="8081" protocol="HTTP/1.1"
                connectionTimeout="20000"

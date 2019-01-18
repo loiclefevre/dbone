@@ -70,6 +70,8 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 ```Bash
 [oracle @CCI-VM ~] $ wget http://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.zip
 [oracle @CCI-VM ~] $ unzip apache-tomcat-8.5.37.zip
+[oracle @CCI-VM ~] $ cd apache-tomcat-8.5.37/bin
+[oracle @CCI-VM ~] $ ./catalina.sh start
 ```
 
 - download ORDS: https://www.oracle.com/technetwork/developer-tools/rest-data-services/downloads/index.html

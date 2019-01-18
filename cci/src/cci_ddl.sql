@@ -64,7 +64,18 @@ comment on column log_messages.message  is 'The message (maximum 4,000 bytes).';
 comment on column log_messages.log_date  is 'The message timestamp.';
 
 
+-- Cloud Teams
+-- Used to group cloud users into logical teams
+create table cloud_teams (
+name varchar2(128) not null,
+country varchar2(128) not null);
 
+alter table cloud_teams add constraint PK_cloud_teams primary key  (name,country);
+
+comment on table cloud_teams  is 'Contains all the teams per country for grouping logically cloud users (can be used for reporting...).';
+
+comment on column cloud_teams.name  is 'Team name.';
+comment on column cloud_teams.country  is 'Team country.';
 
 
 

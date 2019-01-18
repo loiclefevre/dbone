@@ -145,3 +145,40 @@ comment on column cloud_users_last_login.identity_domain_name  is 'Identity Doma
 comment on column cloud_users_last_login.user_email  is 'Cloud user e-mail.';
 comment on column cloud_users_last_login.last_login  is 'Last successfull login time.';
 
+
+-- Cloud Users
+-- Contains all the Cloud Users managed by CCI
+create table cloud_users (	
+	identity_domain_name varchar2(64) not null, 
+	team varchar2(128) not null, 
+	country varchar2(128) not null, 
+	given_name varchar2(128) not null, 
+	family_name varchar2(128) not null, 
+	email varchar2(128) not null, 
+	administrator char(1) not null, 
+	enabled char(1) default 'N' not null, 
+	idcs_user_id varchar2(128), 
+	oci_iam_user_id varchar2(128), 
+	constraint pk_cloud_users primary key (identity_domain_name, email) using index, 
+	constraint fk_team foreign key (team, country) references cloud_teams (name, country), 
+	constraint fk_identity_domain foreign key (identity_domain_name) references identity_domains (name)
+);
+
+create index idx_fk_team on cloud_users (team, country);
+
+
+comment on table cloud_users  is 'Contains all the Cloud Users managed by CCI. IDCS users are created using this table. Cloud user name will be created by concatenating given_name, a dot and family_name in lower case such as: mickey.mouse. Any non letter character must be replaced by a dot (''.'').';
+
+comment on column cloud_users.identity_domain_name  is 'Identity Domain of this OCI compartment.';
+comment on column cloud_users.team  is 'Related Cloud Team.';
+comment on column cloud_users.country  is 'Country this user refers to.';
+comment on column cloud_users.given_name  is 'User''s given name in lower case.';
+comment on column cloud_users.family_name  is 'User''s family name in lower case.';
+comment on column cloud_users.email  is 'User''s e-mail (it won''t be used as the user name to log to Oracle Cloud).';
+comment on column cloud_users.administrator  is 'If ''Y'', this user is an administrator.';
+comment on column cloud_users.enabled  is 'If ''Y'', this user is enabled.';
+comment on column cloud_users.idcs_user_id  is 'IDCS user ID (filled automatically).';
+comment on column cloud_users.oci_iam_user_id  is 'OCI user OCID (filled automatically).';
+
+
+

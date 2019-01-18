@@ -110,7 +110,7 @@ $ service iptables save  # save configuration
 ```
 
 ## Testing the configuration
-From now on, you should be able to connect to APEX using ORDS by using the following URL: http://<VM public IP>:8081/ords
+From now on, you should be able to connect to APEX using ORDS by using the following URL: ![](http://VM public IP:8081/ords "http://VM public IP:8081/ords") 
 
 ## Manage Oracle Cloud Certificate
 To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificate with Oracle database wallets.

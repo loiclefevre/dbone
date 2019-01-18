@@ -69,9 +69,6 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 - download Tomcat: https://tomcat.apache.org/download-80.cgi
 ```Bash
 [oracle @CCI-VM ~] $ wget http://www.mirrorservice.org/sites/ftp.apache.org/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.zip
-[oracle @CCI-VM ~] $ unzip apache-tomcat-8.5.37.zip
-[oracle @CCI-VM ~] $ cd apache-tomcat-8.5.37/bin
-[oracle @CCI-VM ~] $ ./catalina.sh start
 ```
 
 - download ORDS: https://www.oracle.com/technetwork/developer-tools/rest-data-services/downloads/index.html
@@ -81,10 +78,27 @@ In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X a
 ```
 
 - install them:
+  - Apache Tomcat documentation: https://tomcat.apache.org/tomcat-8.5-doc/setup.html
+```Bash
+[oracle @CCI-VM ~] $ unzip apache-tomcat-8.5.37.zip
+[oracle @CCI-VM ~] $ cd apache-tomcat-8.5.37/conf
+```
+    Change HTTP port to 8081 in the server.xml file:
+```XML
+    <Connector port="8081" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443"
+               maxHttpHeaderSize="32000" />
+```
+
+    You can now start the Apache Tomcat server:
+```Bash
+[oracle @CCI-VM ~] $ cd ../bin
+[oracle @CCI-VM ~] $ ./catalina.sh start
+```  
+
   - Oracle-base post: https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat
   - Oracle Rest Data Services documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224
-  - Apache Tomcat documentation: https://tomcat.apache.org/tomcat-8.5-doc/setup.html
-  
 
 ## Network configuration
 

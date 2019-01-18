@@ -111,9 +111,17 @@ $ sqlplus / as sysdba @sys_setup.sql
 ## Manage Websites Certificates
 To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificates with Oracle database wallets.
 
-
-
-Reference article: https://oracle-base.com/articles/misc/utl_http-and-ssl
+Connected on the Db system as oracle:
+- download Oracle Cloud Certificate: (./oracclecloud.com.cer)
+- install it using the following documentation https://oracle-base.com/articles/misc/utl_http-and-ssl
+Don't forget to source the environment:
+```Bash
+[oracle @CCI-DB ~] $ . oraenv
+# ensure you have the right Database setup
+[oracle @CCI-DB ~] $ mkdir -p ~/wallet
+[oracle @CCI-DB ~] $ orapki wallet create -wallet ~/wallet -pwd <YOUR PASSWORD> -auto_login
+[oracle @CCI-DB ~] $ orapki wallet add -wallet ~/wallet -trusted_cert -cert "/host/oracle/oracclecloud.com.cer" -pwd <YOUR PASSWORD>
+```
 
 Afterwards, you'll need to configure the database ACLs to allow the application to connect to the REST API endpoints 
 

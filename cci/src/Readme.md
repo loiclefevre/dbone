@@ -160,7 +160,7 @@ You'll then need to create the schema (and user) CCI and gives the roles. Please
 $ sqlplus / as sysdba @sys_setup.sql
 ```
 
-## OCI Adanced HTTP Signature Installation
+## OCI Advanced HTTP Signature Installation
 One of the challenges to do OCI REST API calls is that all the calls require an Advanced HTTP Signature mechanism. This is easily implemented in Java as described in this ![OCI Advanced HTTP Signature](https://medium.com/db-one/oracle-cloud-infrastructure-advanced-http-signature-for-rest-api-70af85802656 "blog post").
 
 ## APEX Workspace Creation

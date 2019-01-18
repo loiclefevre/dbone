@@ -39,6 +39,15 @@ SQL> @apex_epg_config.sql /root
 SQL> EXEC DBMS_XDB.sethttpport(8080);
 ```
 
+At the end of the process, don't forget to unlock the following accounts to allow the proper installation of ORDS:
+```SQL
+SQL> alter user ORDS_METADATA account unlock;
+SQL> alter user ORDS_PUBLIC_USER account unlock;
+SQL> alter user ORDS_METADATA account unlock;
+SQL> alter user ORDS_METADATA account unlock;
+
+```
+
 ## Virtual Machine to host Oracle Rest Data Services (ORDS)
 You'll then need to create a VM with the following characteristics:
 - Oracle Linux 7.X (7.6 as of now)

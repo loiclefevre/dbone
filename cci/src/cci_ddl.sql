@@ -78,6 +78,43 @@ comment on column cloud_teams.name  is 'Team name.';
 comment on column cloud_teams.country  is 'Team country.';
 
 
+-- Cloud Groups
+-- Contains the groups used by CCI. In case of new group, it will be created inside IDCS as an IDCS group (and numerous Administration roles will be automatically associated to it).
+-- The group will be mapped to an OCI group (federation). Also each group is mapped to an OCI compartment that (for the moment) must be created manually.
+-- There are 2 categories of groups:
+-- -1- child of the Sandbox compartment
+-- -2- child of the Projects compartment
+create table cloud_groups (
+    identity_domain_name varchar2(64) not null, 
+	name varchar2(128) not null, 
+	type varchar2(16) not null, 
+	description varchar2(256) not null, 
+	admin_role varchar2(5) not null, 
+	creation_date date not null, 
+	compartment_child_of varchar2(128) not null, 
+	constraint pk_cloud_groups primary key (identity_domain_name, name) using index, 
+	constraint fk_cloud_groups_id foreign key (identity_domain_name) references identity_domains (name)
+);
+
+
+comment on table cloud_groups  is 'Contains all the groups managed by CCI. All cloud users belong to one or more group(s).';
+
+comment on column cloud_groups.identity_domain_name  is 'Identity domain this (IDCS) Group belongs to.';
+comment on column cloud_groups.name  is 'Name of the (IDCS) Group.';
+comment on column cloud_groups.type  is 'Group Type. As of now, only IDCS is supported.';
+comment on column cloud_groups.description  is 'Group description.';
+comment on column cloud_groups.admin_role  is 'Will this Group have all administration roles associated to it? ''true'' or ''false'' accepted.';
+comment on column cloud_groups.creation_date  is 'Creation date of this group.';
+comment on column cloud_groups.compartment_child_of  is 'OCI Parent compartment this group is related to.';
+
+
+
+
+
+
+
+
+
 
 
 

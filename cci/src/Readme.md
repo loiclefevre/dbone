@@ -39,14 +39,6 @@ SQL> @apex_epg_config.sql /root
 SQL> EXEC DBMS_XDB.sethttpport(8080);
 ```
 
-At the end of the process, don't forget to unlock the following accounts to allow the proper installation of ORDS:
-```SQL
-SQL> alter user ORDS_METADATA account unlock;
-SQL> alter user ORDS_PUBLIC_USER account unlock;
-SQL> alter user APEX_PUBLIC_USER account unlock;
-SQL> alter user APEX_REST_PUBLIC_USER account unlock;
-```
-
 ## Virtual Machine to host Oracle Rest Data Services (ORDS)
 You'll then need to create a VM with the following characteristics:
 - Oracle Linux 7.X (7.6 as of now)
@@ -59,6 +51,14 @@ Once the VM is created, you can define a reserved IP for the VM.
 You'll need to create the user account that will manage Tomcat and ORDS: oracle.
 
 ## Oracle Rest Data Services (ORDS) installation
+*Remark*: before starting, don't forget to unlock the following database user accounts to allow the proper installation of ORDS:
+```SQL
+SQL> alter user ORDS_METADATA account unlock;
+SQL> alter user ORDS_PUBLIC_USER account unlock;
+SQL> alter user APEX_PUBLIC_USER account unlock;
+SQL> alter user APEX_REST_PUBLIC_USER account unlock;
+```
+
 In the aforementioned VM, you'll need to deploy ORDS 18.X in Apache Tomcat 8.X as a best practice for managing APEX 18.X Rest Data Services. 
 
 - install Open JDK 1.8:

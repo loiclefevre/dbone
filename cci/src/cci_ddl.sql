@@ -141,7 +141,7 @@ create table cloud_users_last_login (
 
 comment on table cloud_users_last_login  is 'Contains all the OCI compartments monitored for Automatic Shutdown.';
 
-comment on column cloud_users_last_login.identity_domain_name  is 'Identity Domain of this OCI compartment.';
+comment on column cloud_users_last_login.identity_domain_name  is 'Identity Domain of this user information.';
 comment on column cloud_users_last_login.user_email  is 'Cloud user e-mail.';
 comment on column cloud_users_last_login.last_login  is 'Last successfull login time.';
 
@@ -169,7 +169,7 @@ create index idx_fk_team on cloud_users (team, country);
 
 comment on table cloud_users  is 'Contains all the Cloud Users managed by CCI. IDCS users are created using this table. Cloud user name will be created by concatenating given_name, a dot and family_name in lower case such as: mickey.mouse. Any non letter character must be replaced by a dot (''.'').';
 
-comment on column cloud_users.identity_domain_name  is 'Identity Domain of this OCI compartment.';
+comment on column cloud_users.identity_domain_name  is 'Identity Domain of this cloud user.';
 comment on column cloud_users.team  is 'Related Cloud Team.';
 comment on column cloud_users.country  is 'Country this user refers to.';
 comment on column cloud_users.given_name  is 'User''s given name in lower case.';
@@ -179,6 +179,26 @@ comment on column cloud_users.administrator  is 'If ''Y'', this user is an admin
 comment on column cloud_users.enabled  is 'If ''Y'', this user is enabled.';
 comment on column cloud_users.idcs_user_id  is 'IDCS user ID (filled automatically).';
 comment on column cloud_users.oci_iam_user_id  is 'OCI user OCID (filled automatically).';
+
+-- Group_User_Assoc
+-- Contains the associations of Cloud Users and Cloud Groups. A Cloud User can belong to one or more groups.
+-- /!\ at least one group is required to allow the user to be able to logon.
+create table group_user_assoc (
+	identity_domain_name varchar2(64) not null, 
+	group_name varchar2(128) not null, 
+	user_email varchar2(128) not null, 
+	creation_date date not null, 
+	constraint pk_group_user_assoc primary key (identity_domain_name, group_name, user_email) using index, 
+	constraint fk_grp_usr_assoc_cloud_groups foreign key (identity_domain_name, group_name) references cloud_groups (identity_domain_name, name), 
+	constraint fk_grp_usr_assoc_cloud_users foreign key (identity_domain_name, user_email) references cloud_users (identity_domain_name, email)
+);
+
+comment on table group_user_assoc  is 'Contains the associations of Cloud Users and Cloud Groups. A Cloud User can belong to one or more groups.';
+
+comment on column group_user_assoc.identity_domain_name  is 'Identity Domain of this group and user association.';
+comment on column group_user_assoc.group_name  is 'Group name of this group and user association.';
+comment on column group_user_assoc.user_email  is 'User''s e-mail of this group and user association.';
+comment on column group_user_assoc.creation_date  is 'Creation date of this group and user association.';
 
 
 

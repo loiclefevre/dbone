@@ -159,3 +159,19 @@ You'll then need to create the schema (and user) CCI and gives the roles. Please
 ```Bash
 $ sqlplus / as sysdba @sys_setup.sql
 ```
+
+## APEX Workspace Creation
+Now that the CCI schema exists, you can create the CCI APEX workspace that we'll use to create and test REST API Services.
+
+
+## CCI Schema DDL
+The CCI ![schema DDL script](./cci_ddl.sql "schema DDL script") contains all the SQL code to create the tables used by the application. Simply connect to the pluggable database and run the script as user CCI.
+
+## CCI PL/SQL packages
+
+## CCI Job Scheduling
+
+## CCI Data Administration
+
+
+*Well done, you've successfully installed the Cloud Center Interface!*

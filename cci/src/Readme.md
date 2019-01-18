@@ -43,9 +43,8 @@ At the end of the process, don't forget to unlock the following accounts to allo
 ```SQL
 SQL> alter user ORDS_METADATA account unlock;
 SQL> alter user ORDS_PUBLIC_USER account unlock;
-SQL> alter user ORDS_METADATA account unlock;
-SQL> alter user ORDS_METADATA account unlock;
-
+SQL> alter user APEX_PUBLIC_USER account unlock;
+SQL> alter user APEX_REST_PUBLIC_USER account unlock;
 ```
 
 ## Virtual Machine to host Oracle Rest Data Services (ORDS)

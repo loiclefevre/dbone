@@ -112,7 +112,7 @@ $ sqlplus / as sysdba @sys_setup.sql
 To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificates with Oracle database wallets.
 
 Connected on the Db system as oracle:
-- download Oracle Cloud Certificate: (./oracclecloud.com.cer)
+- download ![Oracle Cloud Certificate](./oracclecloud.com.cer "Oracle Cloud Certificate")
 - install it using the following documentation https://oracle-base.com/articles/misc/utl_http-and-ssl
 Don't forget to source the environment:
 ```Bash

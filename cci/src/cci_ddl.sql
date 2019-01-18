@@ -108,13 +108,23 @@ comment on column cloud_groups.creation_date  is 'Creation date of this group.';
 comment on column cloud_groups.compartment_child_of  is 'OCI Parent compartment this group is related to.';
 
 
+-- Automatic_Shutdown_Compartment
+-- List of OCI compartments scanned for automatic shutdown process
+create table automatic_shutdown_compartment (
+    identity_domain_name varchar2(128) not null, 
+    compartment_name varchar2(256) not null, 
+    compartment_ocid varchar2(256) not null, 
+    constraint pk_automatic_shutdown_compartment primary key (identity_domain_name, compartment_name) using index, 
+    constraint fk_automatic_shutdown_id foreign key (identity_domain_name) references identity_domains (name)
+);
+
+create index idx_fk_identity_domain on automatic_shutdown_compartment (identity_domain_name);
 
 
+comment on table automatic_shutdown_compartment  is 'Contains all the OCI compartments monitored for Automatic Shutdown.';
 
-
-
-
-
-
+comment on column automatic_shutdown_compartment.identity_domain_name  is 'Identity Domain of this OCI compartment.';
+comment on column automatic_shutdown_compartment.compartment_name  is 'OCI compartment to monitor.';
+comment on column automatic_shutdown_compartment.compartment_ocid  is 'OCI compartment OCID.';
 
 

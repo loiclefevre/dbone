@@ -201,4 +201,28 @@ comment on column group_user_assoc.user_email  is 'User''s e-mail of this group 
 comment on column group_user_assoc.creation_date  is 'Creation date of this group and user association.';
 
 
+-- Entitled Services
+-- Contains the list of entitled services to this Cloud Account.
+create table entitled_services (
+    identity_domain_name varchar2(64) not null,
+    es_doc clob CONSTRAINT ensure_json CHECK (es_doc IS JSON),
+    date_of_retrieval timestamp(9) default systimestamp not null,
+    constraint PK_entitled_services primary key (identity_domain_name)
+)
+LOB(es_doc)
+STORE AS SECUREFILE (
+COMPRESS HIGH
+CACHE
+DEDUPLICATE
+)
+--FLASHBACK ARCHIVE fla_cci
+;
+
+comment on table entitled_services  is 'Contains the list of entitled services to this Cloud Account.';
+
+comment on column entitled_services.identity_domain_name  is 'Identity Domain the entitled services belongs to.';
+comment on column entitled_services.es_doc  is 'JSON document containing the entitled services.';
+comment on column entitled_services.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';
+
+
 

@@ -128,24 +128,6 @@ comment on column automatic_shutdown_compartment.compartment_name  is 'OCI compa
 comment on column automatic_shutdown_compartment.compartment_ocid  is 'OCI compartment OCID.';
 
 
--- Cloud_Users_Last_Login
--- Contains the last successfull login time for cloud users.
-create table cloud_users_last_login (
-    identity_domain_name varchar2(64) not null, 
-    user_email varchar2(128) not null, 
-    last_login timestamp (3) not null, 
-    constraint pk_cloud_users_last_login primary key (identity_domain_name, user_email) using index, 
-    constraint fk_users_last_login foreign key (identity_domain_name, user_email) references cloud_users (identity_domain_name, email)
-);
-
-
-comment on table cloud_users_last_login  is 'Contains all the OCI compartments monitored for Automatic Shutdown.';
-
-comment on column cloud_users_last_login.identity_domain_name  is 'Identity Domain of this user information.';
-comment on column cloud_users_last_login.user_email  is 'Cloud user e-mail.';
-comment on column cloud_users_last_login.last_login  is 'Last successfull login time.';
-
-
 -- Cloud Users
 -- Contains all the Cloud Users managed by CCI
 create table cloud_users (	
@@ -179,6 +161,24 @@ comment on column cloud_users.administrator  is 'If ''Y'', this user is an admin
 comment on column cloud_users.enabled  is 'If ''Y'', this user is enabled.';
 comment on column cloud_users.idcs_user_id  is 'IDCS user ID (filled automatically).';
 comment on column cloud_users.oci_iam_user_id  is 'OCI user OCID (filled automatically).';
+
+
+-- Cloud_Users_Last_Login
+-- Contains the last successfull login time for cloud users.
+create table cloud_users_last_login (
+    identity_domain_name varchar2(64) not null, 
+    user_email varchar2(128) not null, 
+    last_login timestamp (3) not null, 
+    constraint pk_cloud_users_last_login primary key (identity_domain_name, user_email) using index, 
+    constraint fk_users_last_login foreign key (identity_domain_name, user_email) references cloud_users (identity_domain_name, email)
+);
+
+
+comment on table cloud_users_last_login  is 'Contains all the OCI compartments monitored for Automatic Shutdown.';
+
+comment on column cloud_users_last_login.identity_domain_name  is 'Identity Domain of this user information.';
+comment on column cloud_users_last_login.user_email  is 'Cloud user e-mail.';
+comment on column cloud_users_last_login.last_login  is 'Last successfull login time.';
 
 -- Group_User_Assoc
 -- Contains the associations of Cloud Users and Cloud Groups. A Cloud User can belong to one or more groups.

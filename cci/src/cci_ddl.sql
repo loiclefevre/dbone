@@ -299,3 +299,24 @@ comment on column service_quotas.identity_domain_name  is 'Identity Domain the c
 comment on column service_quotas.service_name  is 'Cloud Service name for these quotas.';
 comment on column service_quotas.sq_doc  is 'JSON document containing the cloud service quotas.';
 comment on column service_quotas.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';
+
+
+-- Service Resources
+-- List the Resources for all Cloud Services (common to all cloud accounts and Identity Domains).
+create table service_resources (
+    service_name varchar2(64) not null primary key,
+    sr_doc clob CONSTRAINT ensure_json_sr CHECK (sr_doc IS JSON),
+    date_of_retrieval timestamp(9) default systimestamp not null
+)
+LOB(sr_doc)
+STORE AS SECUREFILE (
+COMPRESS HIGH
+CACHE
+DEDUPLICATE
+);
+
+comment on table service_resources  is 'List the Resources for all Cloud Services (common to all cloud accounts and Identity Domains).';
+
+comment on column service_resources.service_name  is 'Cloud Service name for these resources.';
+comment on column service_resources.sr_doc  is 'JSON document containing the cloud service resources.';
+comment on column service_resources.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';

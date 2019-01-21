@@ -276,3 +276,26 @@ comment on column service_daily_usages.service_name  is 'Cloud Service name for 
 comment on column service_daily_usages.day_of_usage  is 'Date for these resource metric usages details.';
 comment on column service_daily_usages.su_doc  is 'JSON document containing the daily cloud service usages.';
 comment on column service_daily_usages.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';
+
+
+-- Service Quotas
+-- Contains the quotas per Cloud Service information.
+create table service_quotas (
+    identity_domain_name varchar2(64) not null,
+    service_name varchar2(64) not null,
+    sq_doc clob CONSTRAINT ensure_json_sq CHECK (sq_doc IS JSON),
+    date_of_retrieval timestamp(9) default systimestamp not null
+)
+LOB(sq_doc)
+STORE AS SECUREFILE (
+COMPRESS HIGH
+CACHE
+DEDUPLICATE
+);
+
+comment on table service_quotas  is 'Contains the quotas per Cloud Service information.';
+
+comment on column service_quotas.identity_domain_name  is 'Identity Domain the cloud services quotas refers to.';
+comment on column service_quotas.service_name  is 'Cloud Service name for these quotas.';
+comment on column service_quotas.sq_doc  is 'JSON document containing the cloud service quotas.';
+comment on column service_quotas.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';

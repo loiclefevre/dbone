@@ -225,4 +225,29 @@ comment on column entitled_services.es_doc  is 'JSON document containing the ent
 comment on column entitled_services.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';
 
 
+-- Service Daily Usage Costs
+-- Contains the daily usage costs per Cloud Service for a given Identity Domain.
+create table service_daily_usage_costs (
+    identity_domain_name varchar2(64) not null,
+    service_name varchar2(64) not null,
+    day_of_usage_cost date not null,
+    suc_doc clob CONSTRAINT ensure_json_suc CHECK (suc_doc IS JSON),
+    date_of_retrieval timestamp(9) default systimestamp not null
+)
+LOB(suc_doc)
+STORE AS SECUREFILE (
+COMPRESS HIGH
+CACHE
+DEDUPLICATE
+);
+
+alter table service_daily_usage_costs add constraint PK_service_daily_usage_costs primary key (identity_domain_name, service_name, day_of_usage_cost);
+
+comment on table service_daily_usage_costs  is 'Contains the list of entitled services to this Cloud Account.';
+
+comment on column service_daily_usage_costs.identity_domain_name  is 'Identity Domain the cloud services usage refers to.';
+comment on column service_daily_usage_costs.service_name  is 'Cloud Service name for these daily usage costs.';
+comment on column service_daily_usage_costs.day_of_usage_cost  is 'Date for these costs details.';
+comment on column service_daily_usage_costs.suc_doc  is 'JSON document containing the daily cloud service usage costs.';
+comment on column service_daily_usage_costs.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';
 

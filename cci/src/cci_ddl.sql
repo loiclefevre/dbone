@@ -243,7 +243,7 @@ DEDUPLICATE
 
 alter table service_daily_usage_costs add constraint PK_service_daily_usage_costs primary key (identity_domain_name, service_name, day_of_usage_cost);
 
-comment on table service_daily_usage_costs  is 'Contains the list of entitled services to this Cloud Account.';
+comment on table service_daily_usage_costs  is 'Contains the daily usage costs per Cloud Service for a given Identity Domain.';
 
 comment on column service_daily_usage_costs.identity_domain_name  is 'Identity Domain the cloud services usage refers to.';
 comment on column service_daily_usage_costs.service_name  is 'Cloud Service name for these daily usage costs.';
@@ -251,3 +251,28 @@ comment on column service_daily_usage_costs.day_of_usage_cost  is 'Date for thes
 comment on column service_daily_usage_costs.suc_doc  is 'JSON document containing the daily cloud service usage costs.';
 comment on column service_daily_usage_costs.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';
 
+-- Service Daily Usages
+-- Contains the daily usages per Cloud Service for a given Identity Domain (i.e. the Cloud Service Metrics).
+create table service_daily_usages (
+    identity_domain_name varchar2(64) not null,
+    service_name varchar2(64) not null,
+    day_of_usage date not null,
+    su_doc clob CONSTRAINT ensure_json_su CHECK (su_doc IS JSON),
+    date_of_retrieval timestamp(9) default systimestamp not null
+)
+LOB(su_doc)
+STORE AS SECUREFILE (
+COMPRESS HIGH
+CACHE
+DEDUPLICATE
+);
+
+alter table service_daily_usages add constraint PK_service_daily_usages primary key (identity_domain_name, service_name, day_of_usage);
+
+comment on table service_daily_usages  is 'Contains the daily usages per Cloud Service for a given Identity Domain (i.e. the Cloud Service Metrics).';
+
+comment on column service_daily_usages.identity_domain_name  is 'Identity Domain the cloud services usages refers to.';
+comment on column service_daily_usages.service_name  is 'Cloud Service name for these daily usages.';
+comment on column service_daily_usages.day_of_usage  is 'Date for these resource metric usages details.';
+comment on column service_daily_usages.su_doc  is 'JSON document containing the daily cloud service usages.';
+comment on column service_daily_usages.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';

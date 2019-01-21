@@ -320,3 +320,33 @@ comment on table service_resources  is 'List the Resources for all Cloud Service
 comment on column service_resources.service_name  is 'Cloud Service name for these resources.';
 comment on column service_resources.sr_doc  is 'JSON document containing the cloud service resources.';
 comment on column service_resources.date_of_retrieval  is 'Denotes the time of retrieval from Oracle Cloud of these information.';
+
+-- Services Cost
+-- Contains the list of prices per Cloud Services resource.
+create table services_cost (
+	service_name  varchar2(128) not null,
+	resource_type varchar2(128) not null,
+	resource_option varchar2(128),
+	byol          char(1) not null,
+	unit          varchar2(64) not null,
+	period        varchar2(64) not null,
+	currency      varchar2(3) not null,
+	price_payg    number not null,
+	price_mf      number not null
+);
+
+create unique index idx_services_cost on services_cost (service_name,resource_type,resource_option,byol);
+
+
+comment on table services_cost  is 'Contains the list of prices per Cloud Services resource.';
+
+comment on column services_cost.service_name  is 'Cloud Service name for this cost entry.';
+comment on column services_cost.resource_type  is 'Resource type for this cost entry.';
+comment on column services_cost.resource_option  is 'Resource Option for this cost entry (example: Enterprise version...).';
+comment on column services_cost.byol  is 'If ''Y'', this is a Bring Your Own License cost.';
+comment on column services_cost.unit  is 'Unit for this cost entry.';
+comment on column services_cost.period  is 'Hour or Month.';
+comment on column services_cost.currency  is 'Currency for this cost entry (example: EUR, USD...).';
+comment on column services_cost.price_payg  is 'Cost entry in Pay As You Go model.';
+comment on column services_cost.price_mf  is 'Cost entry in Monthly Flex model.';
+

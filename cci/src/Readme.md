@@ -134,6 +134,8 @@ From now on, you should be able to connect to APEX using ORDS by using the follo
 ## Manage Oracle Cloud Certificate
 To allow the database to connect to the respective Oracle Cloud REST API endpoints, you'll need to download and configure the certificate with Oracle database wallets.
 
+*Remark*: you'll have to setup your wallet as the /home/oracle/wallet since this will be referenced from the PL/SQL code as 'file:/home/oracle/wallet'
+
 Connected on the Db system as oracle:
 - download ![Oracle Cloud Certificate](./oracclecloud.com.cer "Oracle Cloud Certificate")
 - install it using the following documentation https://oracle-base.com/articles/misc/utl_http-and-ssl

@@ -16,5 +16,7 @@ insert into services_cost values ('Instance','CPU','VM.Standard2.1', 'N', 'OCPU'
 insert into services_cost values ('Instance','CPU','VM.Standard.E2.1', 'N', 'OCPU','hour','EUR', 0.02605, 0.02605);
 insert into services_cost values ('Instance','CPU','VM.Standard2.2', 'N', 'OCPU','hour','EUR', 2 * 0.0554, 2 * 0.0554);
 
+insert into services_cost values ('Instance','Block Storage',null,'N','GB','month','EUR',0.0369,0.0369);
+
 COMMIT;
 

@@ -190,4 +190,14 @@ The last step is about populating the tables with the right data for managing us
 
 The following tenant design is to be kept in mind: ![OCI Tenant Design](./OCI%20Tenant%20Design.png "OCI Tenant Design")
 
+_IDENTITY_DOMAINS table_:
+CCI being multitenant, you can populate this table with all the cloud identity domains/tenants you are managing:
+
+```SQL
+insert into identity_domains('<identity domain name>','...);
+
+commit;
+```
+
+
 *Well done, you've successfully installed the Cloud Center Interface!*

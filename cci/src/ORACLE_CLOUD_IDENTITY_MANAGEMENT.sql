@@ -353,12 +353,6 @@ create or replace PACKAGE BODY ORACLE_CLOUD_IDENTITY_MANAGEMENT AS
                       },
                       "active": true,
                       "title": "Team !' || team || q'!",
-                      "addresses": [
-                        {
-                          "country": "!' || upper(substr(country,1,2)) || q'!",
-                          "type": "work"
-                        }
-                      ],
                       "emails": [
                         {
                           "value": "!' || email || q'!",

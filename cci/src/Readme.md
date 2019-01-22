@@ -186,6 +186,8 @@ The CCI code mainly resides into PL/SQL packages. Currently there are 3 of them:
 ## CCI Job Scheduling
 
 ## CCI Data Administration
+The last step is about populating the tables with the right data for managing users, groups, compartments, policies...
 
+The following tenant design is to be kept in mind: ![OCI Tenant Design](./OCI%20Tenant%20Design.png "OCI Tenant Design")
 
 *Well done, you've successfully installed the Cloud Center Interface!*

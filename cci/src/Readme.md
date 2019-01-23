@@ -168,6 +168,13 @@ One of the challenges to do OCI REST API calls is that all the calls require an 
 ## APEX Workspace Creation
 Now that the CCI schema exists, you can create the CCI APEX workspace that we'll use to create and test REST API Services.
 
+## Identity Cloud Service OAuth2 client application
+In order for CCI to connect to Identity Cloud Service (IDCS) and manage users, groups... we need to create an IDCS application and retrieve the associated OAuth2 Client ID and Client Secret.
+
+Following are some screenshots to help:
+![IDCS CCI Application](./IDCS%20CCI%20Application.png "IDCS CCI Application")
+
+![IDCS CCI Application Configuration](./IDCS%20CCI%20Application%20Configuration.png "IDCS CCI Application Configuration")
 
 ## CCI Schema DDL
 The CCI ![schema DDL script](./cci_ddl.sql "schema DDL script") contains all the SQL code to create the tables used by the application. Simply connect to the pluggable database and run the script as user CCI.

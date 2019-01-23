@@ -194,7 +194,10 @@ _IDENTITY_DOMAINS table_:
 CCI being multitenant, you can populate this table with all the cloud identity domains/tenants you are managing:
 
 ```SQL
-insert into identity_domains('<identity domain name>','...);
+insert into identity_domains 
+(NAME,REGION,DESCRIPTION,IDCS_IDENTIFIER,CLOUD_ACCOUNT,TENANT_OCID,ADMINISTRATOR_NAME,ADMINISTRATOR_PASSWORD,CREATION_DATE,CLIENT_ID,CLIENT_SECRET,ADMINISTRATOR_OCID,ADMINISTRATOR_KEY_FINGERPRINT,ADMINISTRATOR_PRIVATE_KEY,DEFAULT_KEY_FINGERPRINT,DEFAULT_PUBLIC_KEY_PEM,OCI_IDP_OCID)
+values 
+('myoraclecloudtenant','eu-frankfurt-1','Tenant for DevOps','idcs-xxxxxxxxxxxxxxxxxxxxx','cacct-yyyyyyyyyyyyyyyyyyyyyy','ocid1.tenancy.oc1..aaaaa.........','loic.lefevre@oracle.com','<my famous password>',current_date,'<OAuth2 client ID>','<OAuth2 client secret>','ocid1.user.oc1..aaaaaaaa................','aa:bb:cc:...','-----BEGIN RSA...','00:11:22:...','-----BEGIN PUBLIC...','ocid1.saml2idp.oc1..aaaaaaaa...');
 
 commit;
 ```

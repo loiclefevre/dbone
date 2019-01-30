@@ -96,7 +96,7 @@ You can now start the Apache Tomcat server:
 ```Bash
 [oracle @CCI-VM ~] $ cd ../bin
 [oracle @CCI-VM ~] $ ./catalina.sh start
-```  
+```
 
   - Oracle-base post: https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat
   - Oracle Rest Data Services documentation: https://docs.oracle.com/database/ords-17/AELIG/installing-REST-data-services.htm#AELIG7224

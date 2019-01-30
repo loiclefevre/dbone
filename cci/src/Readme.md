@@ -187,7 +187,7 @@ The CCI code mainly resides into PL/SQL packages. Currently there are 3 of them:
 
 - ![Identity Management](./ORACLE_CLOUD_IDENTITY_MANAGEMENT.sql "Identity Management"): brings governance for IDCS and OCI IAM federation
 - Metering Information Management
-- OCI Resources Management
+- ![OCI Resources Management](./ORACLE_CLOUD_RESOURCES_MANAGEMENT.sql "Resources Management"): allows to automatically stop or start VMs, Bare Metal servers, Database Systems, Autonomous Data Warehouses and Autonomous Transaction Processing instances per compartments and sub-compartments.
 
 
 ## CCI Job Scheduling

@@ -350,3 +350,16 @@ comment on column services_cost.currency  is 'Currency for this cost entry (exam
 comment on column services_cost.price_payg  is 'Cost entry in Pay As You Go model.';
 comment on column services_cost.price_mf  is 'Cost entry in Monthly Flex model.';
 
+
+create table cloud_balances (
+    IDENTITY_DOMAIN_NAME VARCHAR2(64 BYTE) NOT NULL, 
+    BALANCE NUMBER NOT NULL,
+	DATE_OF_RETRIEVAL TIMESTAMP (9) DEFAULT systimestamp NOT NULL,
+    constraint PK_cloud_balances Primary Key (IDENTITY_DOMAIN_NAME,DATE_OF_RETRIEVAL)
+);
+
+comment on table cloud_balances  is 'Contains all the balances of identity domains managed by the Cloud Center Interface.';
+
+comment on column cloud_balances.IDENTITY_DOMAIN_NAME is 'Identity domain name.';
+comment on column cloud_balances.BALANCE is 'The cloud credits balance for this tenant at this time.'; 
+comment on column cloud_balances.date_of_retrieval is 'Denotes the time of retrieval from Oracle Cloud of these information.';
